@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  dev-db:
+    image: postgres:15
+    ports:
+      - '3001:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=nest
+    networks:
+      - tutorial
+    volumes:
+      - ./data:/var/lib/postgresql/data
+  test-db:
+    image: postgres:15
+    ports:
+      - '3002:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=nest-test
+    networks:
+      - tutorial
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+networks:
+  tutorial:
