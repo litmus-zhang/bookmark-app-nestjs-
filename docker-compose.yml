@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  app:
+    container_name: bookmark-app
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - dev-db
+      - test-db
   dev-db:
     image: postgres:15
     ports:
