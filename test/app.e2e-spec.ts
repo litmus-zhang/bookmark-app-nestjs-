@@ -17,11 +17,11 @@ describe('App End to End Tests', () => {
     app = moduleRef.createNestApplication();
     app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     await app.init();
-    await app.listen(3000);
+    await app.listen(3300);
 
     prisma = app.get(PrismaService);
     await prisma.cleanDB();
-    pactum.request.setBaseUrl('http://localhost:3000');
+    pactum.request.setBaseUrl('http://localhost:3300');
   });
   afterAll(async () => {
     app.close();
