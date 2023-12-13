@@ -7,6 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prisma:dev:deploy": "prisma migrate deploy",
+    "prisma:deploy": "prisma migrate deploy",
     "db:dev:rm": "docker compose rm -s -f -v dev-db",
     "db:dev:up": "docker compose up  dev-db -d",
     "db:dev:restart": "yarn db:dev:rm && yarn db:dev:up && sleep 3 && yarn prisma:dev:deploy",
@@ -16,7 +17,7 @@
     "db:test:restart": "yarn db:test:rm && yarn db:test:up && sleep 3 && yarn prisma:test:deploy",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "yarn prisma:deploy &&  nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
